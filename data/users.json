@@ -1184,5 +1184,18 @@
     "city": " ",
     "addres": " ",
     "rol": "admin"
+  },
+  {
+    "id": 105,
+    "email": "menaericdaniel@gmail.com",
+    "password": "$2b$10$EMwmIk75AM1DJQyF2nCaRu1.e.HKgBgI30DrIDHeFuUklsEO4oaUe",
+    "avatar": " ",
+    "username": "",
+    "first_name": "que es esto??",
+    "last_name": "ahora si",
+    "city": "pasa",
+    "addres": "",
+    "rol": "",
+    "address": "probe"
   }
 ]

@@ -9,14 +9,14 @@ module.exports = {
     },
     showEditar: (req, res) => {
         const id = req.params.id
-        let user;
+        let userEdit;
         
             users.forEach(element => {
                 if (element.id == id) {
-                    user = element
+                    userEdit = element
                 }
             });
-            res.render("userEdit", { css: '/stylesheets/userEdit.css',user });
+            res.render("userEdit", { css: '/stylesheets/userEdit.css',userEdit });
         
       
         
@@ -62,7 +62,7 @@ module.exports = {
         const {username, email, first_name, last_name, city, address} = req.body
         const id = req.params.id
         users.forEach(element => {
-            if (element.id == id) {               
+            if (element.id == +id) {               
                 element.first_name = first_name
                 element.username = username
                 element.email = email
@@ -72,26 +72,22 @@ module.exports = {
 
                 
                 
-                if (req.files[0]) {
+             if (req.files) {
                     
                     if(fs.existsSync(path.join('public','images','users',element.avatar))){
                             fs.unlinkSync(path.join('public','images','users',element.avatar))
                             element.avatar = req.files[0].filename
                             //req.session.user.avatar = req.files[0].filename
                     }
-                    else{
-
-                        element.avatar = req.files[0].filename
-                       // req.session.user.avatar = req.files[0].filename
-
-                        
-                    }
 
                 }
             }
         });  
-        let nuevojson = JSON.stringify(users, null, 2);
-        fs.writeFileSync("./data/users.json",nuevojson,"utf-8");
+
+        fs.writeFileSync('/data/users.json', JSON.stringify(users, null, 2))
+
+       /*  let nuevojson = JSON.stringify(users, null, 2);
+        fs.writeFileSync("./data/users.json",nuevojson,"utf-8"); */
        // req.session.user.username = username;
         //req.session.user.first_name = first_name;
         //req.session.user.email = email        
